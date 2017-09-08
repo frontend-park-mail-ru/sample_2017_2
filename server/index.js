@@ -1,17 +1,26 @@
 'use strict';
 
-const functions = require('./print');
 const express = require('express');
-const fs = require('fs');
-
+const morgan = require('morgan');
 const app = express();
 
+
+app.use(morgan('dev'));
 app.use(express.static('public'));
 
-app.get('*', (req, res) => {
-	res.send('404');
+
+const users = {};
+
+app.post('/auth', function (req, res) {
+
 });
 
-app.listen(process.env.PORT || '8080', () => {
-	console.log('🚭');
+app.get('/me', function (req, res) {
+
+});
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, function () {
+	console.log(`Server listening port ${port}`);
 });
