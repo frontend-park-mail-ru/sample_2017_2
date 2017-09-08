@@ -1,11 +1,10 @@
 {
-  "name": "frontend-2k17",
+  "name": "sample",
   "version": "1.0.0",
-  "description": "",
+  "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "main.js",
   "scripts": {
-    "start": "node server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/index.js"
   },
   "author": "",
   "license": "ISC",
