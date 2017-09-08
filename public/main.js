@@ -43,6 +43,45 @@
 // }, 3000);
 // console.log(document.cookie);
 
+function auth(username, email, callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('POST', '/auth', true);
+	xhr.withCredentials = true;
+
+	const user = {username, email};
+	const body = JSON.stringify(user);
+
+	xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8');
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState !== 4) return;
+		if (+xhr.status !== 200) {
+			return callback(xhr, null);
+		}
+
+		const response = JSON.parse(xhr.responseText);
+		callback(null, response);
+	};
+
+	xhr.send(body);
+}
+
+function whoami(callback) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', '/me', true);
+	xhr.withCredentials = true;
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState !== 4) return;
+		if (+xhr.status !== 200) {
+			return callback(xhr);
+		}
+		const response = JSON.parse(xhr.responseText);
+		callback(null, response);
+	};
+	xhr.send();
+}
+
+
 const sections = [
 	['login', 'Окно логина'],
 	['profile', 'Мой профиль'],
@@ -75,6 +114,24 @@ nav.addEventListener('click', function (event) {
 
 	const liveSectionsArray = Array.from(liveSectionsCollection);
 
+	if (sectionId === 'profile') {
+		liveSectionsArray.forEach(function (sectionElement) {
+			sectionElement.hidden = true;
+		});
+		whoami(function (err, resp) {
+			if (err) {
+				return alert(`AUTH Error: ${err.status}`);
+			}
+			emailDiv.textContent = resp.email;
+			usernameDiv.textContent = resp.username;
+			countDiv.textContent = resp.count;
+			liveSectionsArray
+				.find(section => section.id === 'profile')
+				.hidden = false;
+		});
+		return;
+	}
+
 	liveSectionsArray.forEach(function (sectionElement) {
 		sectionElement.hidden = true;
 
@@ -90,6 +147,14 @@ loginForm.addEventListener('submit', function (event) {
 	const email = loginForm.elements['email'].value;
 	const username = loginForm.elements['username'].value;
 
-	emailDiv.textContent = email;
-	usernameDiv.textContent = username;
+	auth(username, email, function (err, resp) {
+		if (err) {
+			return alert(`AUTH Error: ${err.status}`);
+		}
+
+		loginForm.reset();
+	});
+
+	// emailDiv.textContent = email;
+	// usernameDiv.textContent = username;
 });
