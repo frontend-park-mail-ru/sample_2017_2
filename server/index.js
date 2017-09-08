@@ -33,7 +33,7 @@ app.post('/auth', function (req, res) {
 	const id = uuid();
 	ids[id] = email;
 
-	res.cookie('podvorot', id, {domain: 'localhost', expires: new Date(Date.now() + 1000 * 60 * 10)});
+	res.cookie('podvorot', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
 	res.json({id});
 });
 
