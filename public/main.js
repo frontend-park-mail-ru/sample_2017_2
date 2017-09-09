@@ -1,47 +1,5 @@
 'use strict';
 
-//
-// function auth(username, email, callback) {
-// 	const user = {username, email};
-// 	const body = JSON.stringify(user);
-//
-// 	const xhr = new XMLHttpRequest();
-// 	xhr.open('POST', '/auth', true);
-// 	xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-// 	xhr.withCredentials = true;
-// 	xhr.onreadystatechange = function () {
-// 		if (xhr.readyState !== 4) return;
-// 		if (+xhr.status !== 200) {
-// 			return callback(xhr);
-// 		}
-// 		const response = JSON.parse(xhr.responseText);
-// 		callback(null, response);
-// 	};
-// 	xhr.send(body);
-// }
-//
-// function whoami(callback) {
-// 	const xhr = new XMLHttpRequest();
-// 	xhr.open('GET', '/me', true);
-// 	xhr.withCredentials = true;
-// 	xhr.onreadystatechange = function () {
-// 		if (xhr.readyState !== 4) return;
-// 		if (+xhr.status !== 200) {
-// 			return callback(xhr);
-// 		}
-// 		const response = JSON.parse(xhr.responseText);
-// 		callback(null, response);
-// 	};
-// 	xhr.send();
-// }
-//
-// auth('sawoder', 'a.ostapenko@corp.mail.ru', (err, res) => console.log({err, res}));
-//
-//
-// setTimeout(() => {
-// 	whoami((err, res) => console.log({err, res}));
-// }, 3000);
-// console.log(document.cookie);
 
 function auth(username, email, callback) {
 	const xhr = new XMLHttpRequest();
@@ -70,17 +28,19 @@ function whoami(callback) {
 	const xhr = new XMLHttpRequest();
 	xhr.open('GET', '/me', true);
 	xhr.withCredentials = true;
+
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState !== 4) return;
 		if (+xhr.status !== 200) {
-			return callback(xhr);
+			return callback(xhr, null);
 		}
+
 		const response = JSON.parse(xhr.responseText);
 		callback(null, response);
 	};
+
 	xhr.send();
 }
-
 
 const sections = [
 	['login', 'Окно логина'],
@@ -110,8 +70,6 @@ const liveSectionsCollection = application.getElementsByTagName('section');
 
 nav.addEventListener('click', function (event) {
 	const sectionId = event.target.getAttribute('data-section');
-	console.log(sectionId);
-
 	const liveSectionsArray = Array.from(liveSectionsCollection);
 
 	if (sectionId === 'profile') {
@@ -133,11 +91,7 @@ nav.addEventListener('click', function (event) {
 	}
 
 	liveSectionsArray.forEach(function (sectionElement) {
-		sectionElement.hidden = true;
-
-		if (sectionElement.id === sectionId) {
-			sectionElement.hidden = false;
-		}
+		sectionElement.hidden = sectionElement.id !== sectionId;
 	});
 });
 
@@ -154,7 +108,4 @@ loginForm.addEventListener('submit', function (event) {
 
 		loginForm.reset();
 	});
-
-	// emailDiv.textContent = email;
-	// usernameDiv.textContent = username;
 });

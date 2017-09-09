@@ -1,26 +1,26 @@
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 #application h1 {
-  font-family: --apple-system, Arial, sans-serif;
-  font-size: 36px;
-  transition: all .7s;
+	font-family: --apple-system, Arial, sans-serif;
+	font-size: 36px;
+	transition: all .7s;
 }
 
 nav {
-  margin-bottom: 2em;
+	margin-bottom: 2em;
 }
 
 .hidden {
-  opacity: 0;
+	opacity: 0;
 }
