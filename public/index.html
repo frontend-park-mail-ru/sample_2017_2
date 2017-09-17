@@ -5,44 +5,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="/main.css">
-	<title>Топ-кек приложение</title>
+	<link rel="stylesheet" href="/blocks/form/index.css">
+	<link rel="stylesheet" href="/blocks/profile/index.css">
+	<link rel="stylesheet" href="/blocks/scoreboard/index.css">
+	<title>Frontend-sample application</title>
 </head>
 <body>
 
-<div id="application">
-	<h1>Топ-кек приложение</h1>
-	<nav id="navigation"></nav>
+<div id="application"></div>
 
-	<section id="login" hidden>
+<script src="/blocks/block/index.js"></script>
 
-		<h2>Войдите</h2>
-		<form action="" id="login-form">
+<script src="/blocks/form/index.js"></script>
 
-			<input type="text" name="username" placeholder="Введите ваше имя" required>
-			<br>
-			<input type="email" name="email" placeholder="Ваш E-Mail" required>
-			<br>
+<script src="/blocks/scoreboard/scoreboard.pug.js"></script>
+<script src="/blocks/scoreboard/index.js"></script>
 
-			<input type="submit" id="login-button" value="Войти">
+<script src="/blocks/profile/profile.pug.js"></script>
+<script src="/blocks/profile/index.js"></script>
 
-		</form>
-
-	</section>
-	<section id="profile" hidden>
-
-		<h2>Меня зовут <span id="username-div">Anonimous Frontender</span></h2>
-		<p>Я крутой на <strong id="count-div">+100500</strong> очков</p>
-		<em id="email-div"></em>
-
-	</section>
-	<section id="about" hidden>
-
-		<h2>Это было сделано PHP-ненавистником</h2>
-
-	</section>
-
-</div>
-
+<script src="/modules/http.js"></script>
+<script src="/services/user-service.js"></script>
+<script src="/configs/login-fields.js"></script>
+<script src="/configs/signup-fields.js"></script>
 <script src="/main.js"></script>
 
 </body>
