@@ -7,6 +7,9 @@
     "start": "npm run compile-pug && node server/index.js",
     "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/blocks/"
   },
+  "engines": {
+    "node": ">=8.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
