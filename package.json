@@ -4,15 +4,18 @@
   "description": "Study Project, developed in collaboration with students of Technopark",
   "main": "main.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "npm run compile-pug && node server/index.js",
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/blocks/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "morgan": "^1.8.2",
+    "pug": "^2.0.0-rc.4",
+    "pug-cli": "^1.0.0-alpha6",
     "uuid": "^3.1.0"
   }
 }

@@ -1,0 +1,21 @@
+table {
+	width: 100%;
+}
+
+table, tr, th {
+	font-weight: normal;
+}
+
+thead tr {
+	background-color: whitesmoke;
+	font-size: 1.4rem;
+}
+
+tbody tr {
+	will-change: background-color;
+	transition: all 0.333s ease;
+}
+
+tbody tr:hover {
+	background-color: whitesmoke;
+}
