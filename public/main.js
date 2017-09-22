@@ -38,25 +38,17 @@
 		.append(sections.scores)
 		.append(sections.profile);
 
+	function onSubmitLoginForm(formdata) {
+		return userService.login(formdata.email, formdata.password)
+			.then(() => sections.login.loginform.reset())
+			.then(openMenu)
+			.catch((err) => alert(`Some error ${err.status}: ${err.responseText}`));
+	}
+
 	function openLogin() {
 		if (!sections.login.ready) {
 			sections.login.loginform = new Form(loginFields);
-			sections.login.loginform.onSubmit(function (formdata) {
-				userService.login(formdata.email, formdata.password, function (err, resp) {
-					if (err) {
-						alert(`Some error ${err.status}: ${err.responseText}`);
-						return;
-					}
-
-					sections.login.loginform.reset();
-					userService.getData(function (err, resp) {
-						if (err) {
-							return;
-						}
-						openMenu();
-					}, true);
-				});
-			});
+			sections.login.loginform.onSubmit(onSubmitLoginForm);
 			sections.login
 				.append(Block.Create('h2', {}, [], 'Войдите'))
 				.append(sections.login.loginform);

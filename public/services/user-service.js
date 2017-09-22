@@ -28,10 +28,22 @@
 		 * Авторизация пользователя
 		 * @param {string} email
 		 * @param {string} password
-		 * @param {Function} callback
+		 * @param {Function} [callback]
 		 */
 		login(email, password, callback) {
-			Http.Post('/login', {email, password}, callback);
+			return new Promise(function(resolve, reject) {
+				Http.Post('/login', {email, password}, function(err, resp) {
+					if (callback) {
+						callback(err, resp);
+					}
+
+					if (err) {
+						reject(err);
+					} else {
+						resolve(resp);
+					}
+				});
+			});
 		}
 
 		/**
@@ -60,6 +72,16 @@
 				this.user = userdata;
 				callback(null, userdata);
 			}.bind(this));
+		}
+
+		promiseData(force) {
+			return new Promise((resolve, reject) => {
+				this.getData(function(err, resp) {
+					if (err) { return reject(err); }
+
+					resolve(resp);
+				}, force);
+			});
 		}
 
 		/**
