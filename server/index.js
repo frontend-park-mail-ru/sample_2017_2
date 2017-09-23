@@ -2,12 +2,17 @@
 
 const express = require('express');
 const body = require('body-parser');
+const cors = require('cors');
 const cookie = require('cookie-parser');
 const morgan = require('morgan');
 const uuid = require('uuid/v4');
 const app = express();
 
 
+app.use(cors({
+	origin: true,
+	credentials: true,
+}));
 app.use(morgan('dev'));
 app.use(express.static('public'));
 app.use(body.json());

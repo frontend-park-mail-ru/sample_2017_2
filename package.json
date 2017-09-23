@@ -15,6 +15,7 @@
   "dependencies": {
     "body-parser": "^1.18.1",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "jasmine": "^2.8.0",
     "morgan": "^1.8.2",
