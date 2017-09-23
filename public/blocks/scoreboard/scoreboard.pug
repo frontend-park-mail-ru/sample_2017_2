@@ -5,6 +5,6 @@ thead
 
 tbody
     each user in users
-        tr
+        tr(class={me: user.me})
             th #{user.email}
             th #{user.score}

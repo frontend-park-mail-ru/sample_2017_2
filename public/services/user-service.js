@@ -72,10 +72,10 @@
 						this.users = this.users.map(function (user) {
 							user.me = user.email === this.user.email;
 							return user;
-						});
+						}.bind(this));
 					}
 
-					return users;
+					return this.users;
 				}.bind(this));
 		}
 	}
