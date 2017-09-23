@@ -74,6 +74,8 @@
 							return user;
 						});
 					}
+
+					return users;
 				}.bind(this));
 		}
 	}
