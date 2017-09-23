@@ -1,6 +1,13 @@
 (function () {
 	'use strict';
 
+	const Http = window.Http;
+
+	if (window.location.host === 'super-frontend.herokuapp.com') {
+		// enable CORS
+		Http.BaseUrl = 'https://super-frontend-backend.herokuapp.com';
+	}
+
 	const Utils = window.Utils;
 	const Block = window.Block;
 	const Form = window.Form;
