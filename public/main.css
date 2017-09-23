@@ -56,3 +56,11 @@ body {
 .menu-section a[hidden] {
 	display: none;
 }
+
+.game__game {
+	font-size: 96px;
+	display: block;
+	width: 400px;
+	text-align: center;
+	margin: 0 auto;
+}

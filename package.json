@@ -16,6 +16,7 @@
     "body-parser": "^1.18.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "jasmine": "^2.8.0",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "^1.0.0-alpha6",
