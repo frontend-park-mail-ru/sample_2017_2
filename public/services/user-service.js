@@ -18,32 +18,20 @@
 		 * @param {string} email
 		 * @param {string} password
 		 * @param {number} age
-		 * @param {Function} callback
+		 * @return {Promise}
 		 */
-		signup(email, password, age, callback) {
-			Http.Post('/signup', {email, password, age}, callback);
+		signup(email, password, age) {
+			return Http.PromisePost('/signup', {email, password, age});
 		}
 
 		/**
 		 * Авторизация пользователя
 		 * @param {string} email
 		 * @param {string} password
-		 * @param {Function} [callback]
+		 * @return {Promise}
 		 */
-		login(email, password, callback) {
-			return new Promise(function(resolve, reject) {
-				Http.Post('/login', {email, password}, function(err, resp) {
-					if (callback) {
-						callback(err, resp);
-					}
-
-					if (err) {
-						reject(err);
-					} else {
-						resolve(resp);
-					}
-				});
-			});
+		login(email, password) {
+			return Http.PromisePost('/login', {email, password});
 		}
 
 		/**
@@ -56,57 +44,37 @@
 
 		/**
 		 * Загружает данные о текущем пользователе
-		 * @param {Function} callback
 		 * @param {boolean} [force=false] - игнорировать ли кэш?
+		 * @return {Promise}
 		 */
-		getData(callback, force = false) {
+		getData(force = false) {
 			if (this.isLoggedIn() && !force) {
-				return callback(null, this.user);
+				return Promise.resolve(this.user);
 			}
 
-			Http.Get('/me', function (err, userdata) {
-				if (err) {
-					return callback(err, userdata);
-				}
-
-				this.user = userdata;
-				callback(null, userdata);
-			}.bind(this));
-		}
-
-		promiseData(force) {
-			return new Promise((resolve, reject) => {
-				this.getData(function(err, resp) {
-					if (err) { return reject(err); }
-
-					resolve(resp);
-				}, force);
-			});
+			return Http.PromiseGet('/me')
+				.then(function (userdata) {
+					this.user = userdata;
+					return userdata;
+				}.bind(this));
 		}
 
 		/**
 		 * Загружает список всех пользователей
-		 * @param callback
+		 * @return {Promise}
 		 */
-		loadUsersList(callback) {
-			Http.Get('/users', function (err, users) {
-				if (err) {
-					return callback(err, users);
-				}
+		loadUsersList() {
+			return Http.PromiseGet('/users')
+				.then(function (users) {
+					this.users = users;
 
-				this.users = users;
-
-				if (this.isLoggedIn()) {
-					this.users = this.users.map(user => {
-						if (user.email === this.user.email) {
-							user.me = true;
-						}
-						return user;
-					});
-				}
-
-				callback(null, this.users);
-			}.bind(this));
+					if (this.isLoggedIn()) {
+						this.users = this.users.map(function (user) {
+							user.me = user.email === this.user.email;
+							return user;
+						});
+					}
+				}.bind(this));
 		}
 	}
 
