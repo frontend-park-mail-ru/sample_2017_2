@@ -19,3 +19,11 @@ tbody tr {
 tbody tr:hover {
 	background-color: whitesmoke;
 }
+
+tbody tr.me {
+	background-color: lightgoldenrodyellow;
+}
+
+tbody tr.me:hover {
+	background-color: palegoldenrod;
+}
