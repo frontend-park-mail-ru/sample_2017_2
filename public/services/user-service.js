@@ -21,7 +21,7 @@
 		 * @return {Promise}
 		 */
 		signup(email, password, age) {
-			return Http.PromisePost('/signup', {email, password, age});
+			return Http.FetchPost('/signup', {email, password, age});
 		}
 
 		/**
@@ -31,7 +31,7 @@
 		 * @return {Promise}
 		 */
 		login(email, password) {
-			return Http.PromisePost('/login', {email, password});
+			return Http.FetchPost('/login', {email, password});
 		}
 
 		/**
@@ -52,7 +52,7 @@
 				return Promise.resolve(this.user);
 			}
 
-			return Http.PromiseGet('/me')
+			return Http.FetchGet('/me')
 				.then(function (userdata) {
 					this.user = userdata;
 					return userdata;
@@ -64,7 +64,7 @@
 		 * @return {Promise}
 		 */
 		loadUsersList() {
-			return Http.PromiseGet('/users')
+			return Http.FetchGet('/users')
 				.then(function (users) {
 					this.users = users;
 
