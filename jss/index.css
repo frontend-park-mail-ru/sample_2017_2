@@ -11,6 +11,12 @@ button {
     font-family: Verdana, Helvetica, Arial;
 }
 
+/* Визуализация изменений темы */
+button,
+.contenteditable {
+    transition: border-radius .3s ease-in-out;
+}
+
 button {
     height: 32px;
     padding: 0 16px;

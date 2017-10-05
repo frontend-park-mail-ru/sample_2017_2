@@ -1,6 +1,7 @@
 /*
  * 1. Изменяем бордеры в твиттере
  * Для компонентов button, .contenteditable
+ * static-livereload --path jss
  */
 
 
@@ -35,19 +36,18 @@ const appendStylesheet = (stylesheet) => {
 	styleTag.innerHTML = stylesheet;
 };
 
+
+// К сути
 let hasTheme = false;
 let styles = createStylesheet([buttonStyles, editableStyles]);
 
-console.log(styles);
-
-const button = document.getElementById('theme-switch');
-
-button.addEventListener('click', (evt) => {
+document
+	.getElementById('theme-switch')
+	.addEventListener('click', (evt) => {
 	let stylesheet = hasTheme ? '' : styles;
 
 	appendStylesheet(stylesheet);
 	hasTheme = !hasTheme;
-	console.log('toggled');
 });
 
 
