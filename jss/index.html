@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/static/index.css">
+	<title>CSS in JS example</title>
+</head>
+<body>
+
+<div class="jss">
+	<div class="theme container">
+		<button class="theme-control">Редизайн!</button>
+	</div>
+
+	<div class="tweet container">
+		<div class="editor container">
+			<div
+				class="contenteditable"
+				contenteditable="true"
+				spellchek="true"
+				aria-multiline="true"
+				aria-placeholder="Что нового?"></div>
+		</div>
+
+		<div class="controls container">
+			<button
+				class="send-tweet"
+				type="button">
+				Твитнуть
+			</button>
+		</div>
+	</div>
+</div>
+
+<script src="/static/index.js"></script>
+
+</body>
+</html>
