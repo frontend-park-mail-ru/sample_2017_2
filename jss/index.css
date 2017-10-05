@@ -17,7 +17,7 @@ button {
     outline: none;
 
     /* темизация */
-    border-radius: 100px;
+    /*border-radius: 100px;*/
 
     /* темизация цвета */
     color: #FFFFFF;
@@ -77,7 +77,7 @@ button:focus {
     border-style: solid;
 
     /* темизация */
-    border-radius: 8px;
+    /*border-radius: 8px;*/
 
     /* темизация цвета */
     border-color: #e6ecf0;
