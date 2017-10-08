@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run compile-pug && node server/index.js",
-    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/"
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
+    "run-jss": "reload -bv -d jss"
   },
   "engines": {
     "node": ">=8.0"
@@ -22,6 +23,7 @@
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "^1.0.0-alpha6",
+    "reload": "^2.2.2",
     "uuid": "^3.1.0"
   }
 }

@@ -1,7 +1,6 @@
 /*
  * 1. Изменяем бордеры в твиттере
  * Для компонентов button, .contenteditable
- * static-livereload --path jss
  */
 
 
@@ -43,11 +42,9 @@ let styles = createStylesheet([buttonStyles, editableStyles]);
 
 document
 	.getElementById('theme-switch')
-	.addEventListener('click', (evt) => {
-	let stylesheet = hasTheme ? '' : styles;
+	.addEventListener('click', function (evt) {
+		let stylesheet = hasTheme ? '' : styles;
 
-	appendStylesheet(stylesheet);
-	hasTheme = !hasTheme;
-});
-
-
+		appendStylesheet(stylesheet);
+		hasTheme = !hasTheme;
+	});
