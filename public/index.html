@@ -4,33 +4,61 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="/main.css">
-	<link rel="stylesheet" href="/blocks/form/index.css">
-	<link rel="stylesheet" href="/blocks/profile/index.css">
-	<link rel="stylesheet" href="/blocks/scoreboard/index.css">
+	<link rel="icon" type="image/png" href="node-js-128.png">
+	<link rel="stylesheet" href="styles/index.css">
+
+	<link rel="stylesheet" href="views/about-view/about-view.css">
+	<link rel="stylesheet" href="views/application-view/application-view.css">
+	<link rel="stylesheet" href="views/game-view/game-view.css">
+	<link rel="stylesheet" href="views/menu-view/menu-view.css">
+	<link rel="stylesheet" href="views/profile-view/profile-view.css">
+	<link rel="stylesheet" href="views/scoreboard-view/scoreboard-view.css">
+	<link rel="stylesheet" href="views/signin-view/signin-view.css">
+	<link rel="stylesheet" href="views/signup-view/signup-view.css">
+
+	<link rel="stylesheet" href="blocks/form/form.css">
+
 	<title>Frontend-sample application</title>
 </head>
 <body>
 
-<div id="application"></div>
+<script>
+	'use strict';
 
-<script src="/modules/utils.js"></script>
-<script src="/modules/http.js"></script>
+	// Создаём объект для сохранения всех модулей
+	window.___all_modules = Object.create(null);
+</script>
 
-<script src="/blocks/block/index.js"></script>
+<script src="modules/utils/wait.js"></script>
+<script src="modules/event-bus.js"></script>
+<script src="modules/http.js"></script>
+<script src="modules/block.js"></script>
+<script src="modules/view.js"></script>
+<script src="modules/router.js"></script>
 
-<script src="/blocks/form/index.js"></script>
+<script src="services/user-service.js"></script>
 
-<script src="/blocks/scoreboard/scoreboard.pug.js"></script>
-<script src="/blocks/scoreboard/index.js"></script>
+<script src="blocks/form/form.js"></script>
 
-<script src="/blocks/profile/profile.pug.js"></script>
-<script src="/blocks/profile/index.js"></script>
+<script src="views/about-view/about.pug.js"></script>
+<script src="views/application-view/application.pug.js"></script>
+<script src="views/game-view/game.pug.js"></script>
+<script src="views/menu-view/menu.pug.js"></script>
+<script src="views/profile-view/profile.pug.js"></script>
+<script src="views/scoreboard-view/scoreboard.pug.js"></script>
+<script src="views/signin-view/signin.pug.js"></script>
+<script src="views/signup-view/signup.pug.js"></script>
 
-<script src="/services/user-service.js"></script>
-<script src="/configs/login-fields.js"></script>
-<script src="/configs/signup-fields.js"></script>
-<script src="/main.js"></script>
+<script src="views/about-view/about-view.js"></script>
+<script src="views/application-view/application-view.js"></script>
+<script src="views/game-view/game-view.js"></script>
+<script src="views/menu-view/menu-view.js"></script>
+<script src="views/profile-view/profile-view.js"></script>
+<script src="views/scoreboard-view/scoreboard-view.js"></script>
+<script src="views/signin-view/signin-view.js"></script>
+<script src="views/signup-view/signup-view.js"></script>
+
+<script src="boot.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+mixin item(title, href)
+	a.menu-view__menu-item(href=href)= title
+
+
+.menu-view
+	if authorized
+		h2.menu-view__header Привет, #{username}!
+	else
+		h2.menu-view__header Привет!
+
+	+item('Играть!', '/game')
+	if authorized
+		+item('Профиль', '/profile')
+	unless authorized
+		+item('Вход', '/signin')
+		+item('Регистрация', '/signup')
+	+item('Таблица лидеров', '/scoreboard')
+	+item('Об игре', '/about')

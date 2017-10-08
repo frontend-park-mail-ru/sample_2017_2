@@ -1,0 +1,16 @@
+.profile-view {
+
+}
+
+.profile-view__header {
+
+}
+
+.profile-view__info-field {
+	display: inline-block;
+	width: 100px;
+}
+
+.profile-view__info-value {
+	font-weight: bold;
+}

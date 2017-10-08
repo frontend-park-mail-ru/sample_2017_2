@@ -1,5 +1,7 @@
-(function () {
+(function (modules) {
 	'use strict';
+
+	const utils = modules.utils = modules.utils || Object.create(null);
 
 	/**
 	 * Приостановить выполнение на time миллисекунд
@@ -12,8 +14,6 @@
 		});
 	}
 
-	window.Utils = {
-		wait: wait,
-	};
+	utils.wait = wait;
 
-})();
+})(window.___all_modules);

@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run compile-pug && node server/index.js",
-    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/blocks/"
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/"
   },
   "engines": {
     "node": ">=8.0"
@@ -17,6 +17,7 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.15.4",
+    "express-history-api-fallback": "^2.2.1",
     "jasmine": "^2.8.0",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.4",

@@ -1,0 +1,21 @@
+.menu-view {
+
+}
+
+.menu-view__menu-item {
+	display: block;
+	padding: 0.6em;
+	margin-bottom: 0.4em;
+	cursor: pointer;
+	font-weight: lighter;
+	color: black;
+	transition: all 0.33s ease;
+}
+
+.menu-view__menu-item:hover {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-view__header {
+
+}

@@ -1,5 +1,6 @@
 'use strict';
 
+const fallback = require('express-history-api-fallback');
 const express = require('express');
 const body = require('body-parser');
 const cors = require('cors');
@@ -15,6 +16,7 @@ app.use(cors({
 }));
 app.use(morgan('dev'));
 app.use(express.static('public'));
+app.use(fallback('index.html', { root: 'public' }));
 app.use(body.json());
 app.use(cookie());
 
