@@ -5,6 +5,12 @@
 
 На проде все запросы отправляются через CORS на хост [super-frontend-backend.herokuapp.com](https://super-frontend-backend.herokuapp.com/)
 
-Пример теста в файле `spec/user-service.spec.js`
+## Запуск локальной копии
+- `npm install`
+- `npm start`
 
-Запуск командой `node user-service.spec.js`
+## Компиляция pug-шаблонов
+- `npm run compile-pug`
+
+## Запуск в браузере примера с jss-темами
+- `npm run start-jss`
