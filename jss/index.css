@@ -1,0 +1,105 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body,
+button {
+    font-size: 15px;
+    line-height: 20px;
+    font-family: Verdana, Helvetica, Arial;
+}
+
+/* Визуализация изменений темы */
+button,
+.contenteditable {
+    transition: border-radius .3s ease-in-out;
+}
+
+button {
+    height: 32px;
+    padding: 0 16px;
+    outline: none;
+
+    /* темизация */
+    /*border-radius: 100px;*/
+
+    /* темизация цвета */
+    color: #FFFFFF;
+    border-color: transparent;
+    background-color: #F7A4B9;
+}
+
+button:hover {
+    /* темизация цвета */
+    border-color: #F58EA8;
+    background-color: #F58EA8;
+}
+
+button:focus {
+    /* темизация цвета */
+    box-shadow: 0 0 0 2px #FFFFFF,
+                0 0 0 4px #FBD1DC;
+}
+
+.jss {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.jss > div {
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.container:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.theme {
+    text-align: center;
+}
+
+.tweet {
+    padding: 16px;
+
+    /* темизация цвета */
+    background-color: #FEF3F6;
+}
+
+.editor {
+}
+
+.contenteditable {
+    padding: 8px;
+    min-height: 60px;
+    outline: none;
+    background: #FFFFFF;
+    border-width: 1px;
+    border-style: solid;
+
+    /* темизация */
+    /*border-radius: 8px;*/
+
+    /* темизация цвета */
+    border-color: #e6ecf0;
+}
+
+.contenteditable:focus {
+    /* темизация цвета */
+    border-color: #FBD1DC;
+    box-shadow: 0 0 0 1px #FBD1DC;
+}
+
+.contenteditable:empty:before {
+    content: attr(aria-placeholder);
+    display: block;
+}
+
+.controls {
+    text-align: right;
+}

@@ -1,0 +1,7 @@
+.signup-view
+	h2.signup-view__header Регистрация
+	form.signup-view__form.form-block.signup-form-js
+		input(type="email", required="required", name="email", placeholder="Введите ваш email").form-block__field.form-block__input
+		input(type="text", required="required", name="password", placeholder="Придумайте пароль длиннее 4 символов", pattern="^\\S{4,}$").form-block__field.form-block__input
+		input(type="text", required="required", name="age", placeholder="Сколько вам лет?", pattern="^\\d+$").form-block__field.form-block__input
+		input(type="submit", value="Зарегистрироваться").form-block__field.form-block__button

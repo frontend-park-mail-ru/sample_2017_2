@@ -1,0 +1,41 @@
+.scoreboard-view {
+
+}
+
+.scoreboard-view__header {
+
+}
+
+.scoreboard-view__table {
+	width: 100%;
+}
+
+.scoreboard-table {
+	font-weight: normal;
+}
+
+.scoreboard-table__head {
+	background-color: whitesmoke;
+	font-size: 1.4rem;
+}
+
+.scoreboard-table__body {
+
+}
+
+.scoreboard-table__user {
+	will-change: background-color;
+	transition: all 0.333s ease;
+}
+
+.scoreboard-table__user:hover {
+	background-color: whitesmoke;
+}
+
+.scoreboard-table__user_me {
+	background-color: lightgoldenrodyellow;
+}
+
+.scoreboard-table__user_me:hover {
+	background-color: palegoldenrod;
+}

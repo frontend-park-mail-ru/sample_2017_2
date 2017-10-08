@@ -1,7 +1,10 @@
-(function () {
+(function (modules) {
 	'use strict';
 
-	const Http = window.Http;
+	const Http = modules.Http;
+	const EventBus = modules.EventBus;
+
+	const services = modules.services = modules.services || Object.create(null);
 
 	/**
 	 * Сервис для работы с юзерами
@@ -9,8 +12,23 @@
 	 */
 	class UserService {
 		constructor() {
+			if (UserService.__instance) {
+				return UserService.__instance;
+			}
+			this.bus = new EventBus();
 			this.user = null;
 			this.users = [];
+			this.bus.on('users:fetch-users', this.loadUsersList.bind(this));
+			this.bus.on('signup-user', function (data) {
+				const user = data.payload;
+				this.signup(user.email, user.password, +user.age);
+			}.bind(this));
+			this.bus.on('signin-user', function (data) {
+				const user = data.payload;
+				this.login(user.email, user.password);
+			}.bind(this));
+
+			UserService.__instance = this;
 		}
 
 		/**
@@ -21,7 +39,11 @@
 		 * @return {Promise}
 		 */
 		signup(email, password, age) {
-			return Http.FetchPost('/signup', {email, password, age});
+			return Http.FetchPost('/signup', {email, password, age})
+				.then(function (response) {
+					this.login(email, password);
+					return response;
+				}.bind(this));
 		}
 
 		/**
@@ -31,7 +53,11 @@
 		 * @return {Promise}
 		 */
 		login(email, password) {
-			return Http.FetchPost('/login', {email, password});
+			return Http.FetchPost('/login', {email, password})
+				.then(function (response) {
+					this.getData(true);
+					return response;
+				}.bind(this));
 		}
 
 		/**
@@ -55,6 +81,7 @@
 			return Http.FetchGet('/me')
 				.then(function (userdata) {
 					this.user = userdata;
+					this.bus.emit('user:authorized', this.user);
 					return userdata;
 				}.bind(this));
 		}
@@ -75,11 +102,13 @@
 						}.bind(this));
 					}
 
+					this.bus.emit('users:fetched', this.users);
+
 					return this.users;
 				}.bind(this));
 		}
 	}
 
-	window.UserService = UserService;
+	services.UserService = UserService;
 
-})();
+})(window.___all_modules);

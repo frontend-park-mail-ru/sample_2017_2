@@ -1,0 +1,21 @@
+.application {
+	width: 640px;
+}
+
+.application__header {
+	display: block;
+	margin-top: 0.6rem;
+	margin-bottom: 1.4rem;
+	font-size: 2.5rem;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.application__header:visited {
+	color: black;
+}
+
+.application__views {
+
+}

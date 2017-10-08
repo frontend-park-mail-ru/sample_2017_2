@@ -1,4 +1,4 @@
-(function () {
+(function (modules) {
 	'use strict';
 
 	const baseUrl = `${window.location.protocol}//${window.location.host}`;
@@ -124,7 +124,10 @@
 			return fetch(url, {
 				method: 'GET',
 				mode: 'cors',
-				credentials: 'include'
+				credentials: 'include',
+				headers: {
+					'Accept': 'application/json',
+				}
 			})
 				.then(function (response) {
 					if (response.status >= 400) {
@@ -168,6 +171,6 @@
 	 */
 	Http.BaseUrl = null;
 
-	window.Http = Http;
+	modules.Http = Http;
 
-})();
+})(window.___all_modules);

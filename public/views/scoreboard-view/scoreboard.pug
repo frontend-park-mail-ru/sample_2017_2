@@ -1,0 +1,13 @@
+.scoreboard-view
+	h2.scoreboard-view__header Таблица лидеров
+	table.scoreboard-view__table.scoreboard-table
+		thead.scoreboard-table__head
+			tr
+				th Email
+				th Scores
+
+		tbody.scoreboard-table__body
+			each user in users
+				tr(class={'scoreboard-table__user_me': user.me}).scoreboard-table__user
+					th #{user.email}
+					th #{user.score}

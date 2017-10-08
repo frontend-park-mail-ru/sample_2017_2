@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run compile-pug && node server/index.js",
-    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/blocks/"
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
+    "run-jss": "reload -bv -d jss"
   },
   "engines": {
     "node": ">=8.0"
@@ -17,10 +18,12 @@
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "express": "^4.15.4",
+    "express-history-api-fallback": "^2.2.1",
     "jasmine": "^2.8.0",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "^1.0.0-alpha6",
+    "reload": "^2.2.2",
     "uuid": "^3.1.0"
   }
 }
