@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run compile-pug && node server/index.js",
     "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
-    "run-jss": "reload -bv -d jss"
+    "start-jss": "reload -bv -d jss"
   },
   "engines": {
     "node": ">=8.0"
