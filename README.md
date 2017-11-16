@@ -1,16 +1,28 @@
 # sample
 > Study Project, developed in collaboration with students of Technopark
 
-Посмотреть работу приложения можно [здесь](https://super-frontend.herokuapp.com/)
+Пример SPA приложения - книга контактов на базе localStorage.
 
-На проде все запросы отправляются через CORS на хост [super-frontend-backend.herokuapp.com](https://super-frontend-backend.herokuapp.com/)
+## Запуск
+Приложение работает только локально. 
 
-## Запуск локальной копии
+Для запуска необходимо склонировать репозиторий и выполнить команды
+
 - `npm install`
 - `npm start`
 
-## Компиляция pug-шаблонов
-- `npm run compile-pug`
+После этого приложение станет доступно по адресу [127.0.0.1:7001](http://127.0.0.1:7001)
 
-## Запуск в браузере примера с jss-темами
-- `npm run start-jss`
+## Файловая структура
+
+- app/
+- - *components/* - Файлы компонентов, в которых сосредточена основная логика приложения
+- - *framework/* - Каркас приложения. Здесь лежит основа для построения приложения с компонентным подходом.  
+- - *model/* - Модель для хранения состояния приложения в т.ч. и в localStorage.
+- - *events.ts* - Константы с названиями событий
+- - *index.ts* - Точка входа для webpack
+- *public/*
+- - *bootstrap.css* - CSS Фреймворк чтобы было красивенько.
+- - *index.html* - Точка входа в приложение
+- *tsconfig.json* - Обычный конфиг TypeScript
+- *webpack.config.js* - Обычный конфиг webpack для TypeScript

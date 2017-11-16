@@ -2,11 +2,8 @@
   "name": "sample",
   "version": "1.0.0",
   "description": "Study Project, developed in collaboration with students of Technopark",
-  "main": "main.js",
   "scripts": {
-    "start": "npm run compile-pug && node server/index.js",
-    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
-    "start-jss": "reload -bv -d jss"
+    "start": "webpack-dev-server"
   },
   "engines": {
     "node": ">=8.0"
@@ -14,16 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.1",
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.4",
-    "express": "^4.15.4",
-    "express-history-api-fallback": "^2.2.1",
-    "jasmine": "^2.8.0",
-    "morgan": "^1.8.2",
-    "pug": "^2.0.0-rc.4",
-    "pug-cli": "^1.0.0-alpha6",
-    "reload": "^2.2.2",
-    "uuid": "^3.1.0"
+    "awesome-typescript-loader": "^3.3.0",
+    "babel-loader": "^7.1.2",
+    "mocha": "^4.0.1",
+    "typescript": "^2.6.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   }
 }
