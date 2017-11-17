@@ -52,7 +52,6 @@ export default class App extends Component {
 	};
 
 	handleCloseForm = () => {
-		this.contacts.update();
 		this.showHelp()
 	};
 
@@ -66,8 +65,6 @@ export default class App extends Component {
 		});
 
 		contacts.renderTo(this.contactsElement);
-
-		this.contacts = contacts;
 	}
 
 	showHelp() {
@@ -81,6 +78,4 @@ export default class App extends Component {
 
 		contacts.renderTo(this.editElement);
 	}
-
-	private contacts: Contacts;
 }

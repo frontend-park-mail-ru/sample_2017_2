@@ -82,7 +82,7 @@ export default class ItemModel {
 		key: keyof Values,
 		value: Values[typeof key]
 	) {
-		const {values, handlers} = this;
+		const {values, handlers, isNew, list} = this;
 
 		if (values[key] === value) {
 			return;
@@ -94,6 +94,9 @@ export default class ItemModel {
 			handler(key, value);
 		}
 
+		if (!isNew) {
+			list.triggerUpdate();
+		}
 	}
 
 	static load(list: ListModel, id: number): ItemModel {
