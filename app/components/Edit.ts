@@ -1,6 +1,7 @@
 import Component from '../framework/Component';
 import ItemModel from '../model/ItemModel';
 import {CLOSE_FORM} from '../events';
+import {autoBind} from '../framework/autoBind';
 
 interface EditOptions {
 	model: ItemModel;
@@ -32,7 +33,7 @@ export default class Edit extends Component {
 						id="nameInput" 
 						name="name" 
 						placeholder="Иноконтактий Новинских" 
-						value="${name}"
+						data-bind="name"
 					>
 				  </div>
 				  <div class="form-group mb-4">
@@ -42,8 +43,8 @@ export default class Edit extends Component {
 						class="form-control" 
 						name="phoneNumber" 
 						id="phoneInput"
-						placeholder="+7 (916) 123-45-67" 
-						value="${phoneNumber}"
+						placeholder="+7 (916) 123-45-67"
+						data-bind="phoneNumber"
 					>
 				  </div>
 				  <div class="form-group m-0">
@@ -64,11 +65,8 @@ export default class Edit extends Component {
 	}
 
 	handleSubmit = () => {
-		const {options, formElement} = this;
+		const {options} = this;
 		const {model} = options;
-
-		model.name = formElement.name.value;
-		model.phoneNumber = formElement.phoneNumber.value;
 
 		model.save();
 
@@ -85,9 +83,11 @@ export default class Edit extends Component {
 	};
 
 	onRender() {
-		const {cancelButtonElement, formElement} = this;
+		const {cancelButtonElement, formElement, options, domElement} = this;
 
 		formElement.onsubmit = this.handleSubmit;
 		cancelButtonElement.onclick = this.handleCancel;
+
+		autoBind(domElement, options.model);
 	}
 }

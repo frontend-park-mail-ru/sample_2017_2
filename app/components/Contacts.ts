@@ -2,7 +2,7 @@ import Component from '../framework/Component';
 import {ADD_NEW, EDIT} from '../events';
 import ListModel from '../model/ListModel';
 import ItemModel from '../model/ItemModel';
-
+import {autoBind} from '../framework/autoBind';
 interface ContactsOptions {
 	model: ListModel;
 }
@@ -19,8 +19,8 @@ export default class Contacts extends Component {
 		const rows = [...model].map(({ id, name, phoneNumber}, index) => `
 			<tr data-item-id="${id}">
 			  <th scope="row">${index+1}</th>
-			  <td>${name}</td>
-			  <td>${phoneNumber}</td>
+			  <td data-bind="name"></td>
+			  <td data-bind="phoneNumber"></td>
 			</tr>
 		`);
 
@@ -70,6 +70,8 @@ export default class Contacts extends Component {
 			const itemModel = model.getById(parseInt(itemId));
 
 			trElement.onclick = this.handleTrClick(itemModel);
+
+			autoBind(trElement, itemModel);
 		})
 	}
 
