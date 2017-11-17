@@ -95,7 +95,7 @@ export default class ItemModel {
 		}
 
 		if (!isNew) {
-			// list.triggerUpdate();
+			list.triggerUpdate();
 		}
 	}
 

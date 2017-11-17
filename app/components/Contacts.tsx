@@ -1,3 +1,4 @@
+import Реакт from '../framework/Реакт';
 import Component from '../framework/Component';
 import {ADD_NEW, EDIT} from '../events';
 import ListModel from '../model/ListModel';
@@ -16,19 +17,19 @@ export default class Contacts extends Component {
 	render(): string {
 		const {model} = this.options;
 
-		const rows = [...model].map(({ id, name, phoneNumber}, index) => `
-			<tr data-item-id="${id}">
-			  <th scope="row">${index+1}</th>
-			  <td data-bind="name"></td>
-			  <td data-bind="phoneNumber"></td>
+		const rows = [...model].map(({ id, name, phoneNumber}, index) => (
+			<tr data-item-id={id}>
+			  <th scope="row">{index+1}</th>
+			  <td>{name}</td>
+			  <td>{phoneNumber}</td>
 			</tr>
-		`);
+		));
 
-		return `<div>
+		return <div>
 			<div class="py-2">
-			  <button 
+			  <button
 				data-name="addNew"
-				type="button" 
+				type="button"
 				class="btn btn-primary"
 			  >Добавить новый</button>
 			</div>
@@ -41,14 +42,12 @@ export default class Contacts extends Component {
 					</tr>
 				  </thead>
 				  <tbody>
-					${rows.length ? rows.join('') : `
-						<tr>
-							<td colspan="3" style="text-align: center">Книга пуста</td>
-						</tr>
-					`}
+					{rows.length ? rows : <tr>
+						<td colspan="3" style="text-align: center">Книга пуста</td>
+					</tr>}
 				  </tbody>
 			</table>
-		</div>`;
+		</div>;
 	}
 
 	get addNewElement() {
@@ -70,8 +69,6 @@ export default class Contacts extends Component {
 			const itemModel = model.getById(parseInt(itemId));
 
 			trElement.onclick = this.handleTrClick(itemModel);
-
-			autoBind(trElement, itemModel);
 		})
 	}
 

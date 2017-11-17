@@ -1,22 +1,33 @@
+import {createNode, updateNode} from './Реакт';
+
 export default abstract class Component {
 
 	update() {
 		this.renderTo(this.domElement.parentNode);
 	}
 
-	renderTo(element: HTMLElement) {
-		element.innerHTML = this.render();
-		this.domElement = element.childNodes[0];
+	renderTo(parentElement: HTMLElement) {
+		const renderResult = this.render();
 
 		if (!this.isRendered) {
-			this.isRendered = true;
+			const element = this.domElement = createNode(renderResult);
+
+			parentElement.innerHTML = '';
+			parentElement.appendChild(element);
+
 			this.onFirstRender();
+		} else {
+			updateNode(this.domElement, this.lastRenderResult, renderResult);
 		}
+
+		this.lastRenderResult = renderResult;
+		this.isRendered = true;
 
 		this.onRender();
 	}
 
 	protected domElement = null;
+	private lastRenderResult = null;
 
 	protected onFirstRender() {}
 	protected onRender() {}

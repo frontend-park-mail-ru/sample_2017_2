@@ -1,3 +1,4 @@
+import Реакт from '../framework/Реакт';
 import Component from '../framework/Component';
 import Contacts from './Contacts';
 import Edit from './Edit';
@@ -11,13 +12,13 @@ export default class App extends Component {
 	model = ListModel.load();
 
 	render(): string {
-		return `<div class=".container-fluid p-3">
+		return <div class=".container-fluid p-3">
 			<h1>Контакты</h1>
 			<div class="row">
 				<div class="col-6" data-child="contacts"></div>
 				<div class="col-6" data-child="edit"></div>
 			</div>
-		</div>`;
+		</div>;
 	}
 
 	get contactsElement() {

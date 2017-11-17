@@ -1,10 +1,11 @@
 import Component from '../framework/Component';
 import {ADD_NEW} from '../events';
+import Реакт from '../framework/Реакт';
 
 export default class Help extends Component {
 
-	render(): string {
-		return `<div class="card">
+	render() {
+		return <div class="card">
 		  <div class="card-body">
 			<h4 class="card-title">Инструкция</h4>
 			<p class="card-text">
@@ -13,12 +14,12 @@ export default class Help extends Component {
 			<p class="card-text">
 				Чтобы добавить новый контакт воспользуйтесь кнопкой или ссылкой ниже.
 			</p>
-			<a href="#" 
-				class="card-link" 
+			<a href="#"
+				class="card-link"
 				data-name="addNew"
 			>Добавить новый контакт</a>
 		  </div>
-		</div>`;
+		</div>;
 	}
 
 	handleAddNew = () => this.triggerEvent(ADD_NEW);
